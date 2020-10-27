@@ -28,4 +28,29 @@ def solution(genres, plays):
     print(answer)
     return answer
 
+def solution2(genres, plays):
+
+    genreDict=dict()
+    idx=0
+    for gen,play in zip(genres,plays):
+        if gen in genreDict.keys():
+            genreDict[gen].append([play,idx])
+        else:
+            genreDict[gen]=[[play,idx]]
+        idx+=1
+
+    rank = sorted(genreDict.keys(),key= lambda x: -sum(v[0] for v in genreDict[x]))
+
+    answer=[]
+
+    for genre in rank:
+        temp=sorted(genreDict[genre],key=lambda x:(-x[0],x[1]))
+        if len(temp)>0:
+            answer.append(temp[0][1])
+        if len(temp) > 1:
+            answer.append(temp[1][1])
+
+    print (answer)
+    # return answer
+
 solution(["classic", "pop", "classic", "classic", "pop"],[500, 600, 150, 800, 2500])
