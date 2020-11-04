@@ -20,6 +20,8 @@ def solution(n):
     for r in range(n):
         temp=[one for one in board[r] if one!=0]
         answer.extend(temp)
+        
+    return answer
 
 # solution(4)
 solution(5)
