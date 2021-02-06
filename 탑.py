@@ -1,10 +1,19 @@
-def solution(heights):
+n = int(input())
+arr = list(map(int, input().split(' ')))
+Stack = []
 
-    answer = [0]
-    for
+#현재것보다 이전탑이 높으면 이전거 출력
+#이전찹이 낮으면 현재것보다 높은것 찾을때까지 pop
+#만약 못찾고 stack이 비었으면 0 출력
 
-    return answer
+for i in range(n):
+    while Stack:
+        if Stack[-1][1] > arr[i]:
+            print(Stack[-1][0] + 1,end=" ")
+            break
+        Stack.pop()
 
-solution([6,9,5,7,4])
-# solution([3,9,9,3,5,7,2])
-# solution([1,5,3,6,7,6,5])
+    if not Stack:
+        print(0,end=" ")
+
+    Stack.append([i, arr[i]])
